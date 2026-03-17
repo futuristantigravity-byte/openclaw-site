@@ -1737,3 +1737,52 @@ footer a:hover {
     background: #fff;
     transform: translateY(-1px);
 }
+
+/* ═══════════════ BENTO VISUALIZATION ANIMATIONS ═══════════════ */
+
+@keyframes pulseGlowGreen {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(16,185,129,0.4); }
+  50% { box-shadow: 0 0 15px 5px rgba(16,185,129,0.1); }
+}
+
+@keyframes pulseGlowBlue {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(41,226,255,0.4); }
+  50% { box-shadow: 0 0 15px 5px rgba(41,226,255,0.1); }
+}
+
+@keyframes typingDot {
+  0%, 100% { opacity: 0.2; transform: scale(0.8) translateY(0); }
+  50% { opacity: 1; transform: scale(1.2) translateY(-2px); }
+}
+
+@keyframes floatSubtle {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-3px); }
+}
+
+@keyframes progressLoop {
+  0% { transform: scaleX(0); opacity: 0; }
+  10% { transform: scaleX(1); opacity: 1; }
+  90% { transform: scaleX(1); opacity: 1; }
+  100% { transform: scaleX(0); opacity: 0; }
+}
+
+.anim-float-continuous { animation: floatSubtle 4s ease-in-out infinite; }
+.anim-float-continuous-d1 { animation: floatSubtle 4.5s ease-in-out infinite reverse; }
+
+.anim-pulse-glow-green { animation: pulseGlowGreen 3s infinite ease-in-out; }
+.anim-pulse-glow-blue { animation: pulseGlowBlue 3s infinite ease-in-out; }
+
+.anim-progress-loop { transform-origin: left; animation: progressLoop 8s infinite cubic-bezier(0.16, 1, 0.3, 1); }
+.anim-progress-loop-d1 { transform-origin: left; animation: progressLoop 8s infinite cubic-bezier(0.16, 1, 0.3, 1); animation-delay: 0.5s; }
+
+.typing-dot {
+  display: inline-block;
+  width: 4px; height: 4px;
+  border-radius: 50%;
+  background: currentColor;
+  margin: 0 1px;
+  animation: typingDot 1.4s infinite ease-in-out both;
+}
+.typing-dot:nth-child(1) { animation-delay: -0.32s; }
+.typing-dot:nth-child(2) { animation-delay: -0.16s; }
