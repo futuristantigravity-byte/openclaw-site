@@ -1,0 +1,1198 @@
+<!DOCTYPE html>
+<html lang="ru" style="scroll-behavior:smooth">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Настройка OpenClaw для бизнеса — Futurist AI</title>
+  <meta name="description"
+    content="Профессиональная настройка OpenClaw: команда AI-агентов управляет почтой, календарём, контентом и аналитикой через мессенджеры. 24/7 на вашем сервере.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&family=Unbounded:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@20.0.5/build/css/intlTelInput.css">
+  <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@20.0.5/build/js/intlTelInput.min.js"></script>
+  <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/duotone/style.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <canvas id="darkveil-canvas"
+    style="position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:-1;pointer-events:none;"></canvas>
+  
+  <div id="sp"></div>
+  <div class="nz"></div>
+  <div class="amb">
+    <div class="ob ob1"></div>
+    <div class="ob ob2"></div>
+    <div class="ob ob3"></div>
+    <div class="pts">
+      <div class="pt" style="left:10%;animation-delay:0s"></div>
+      <div class="pt" style="left:25%;animation-delay:2s"></div>
+      <div class="pt" style="left:45%;animation-delay:4s;width:3px;height:3px;"></div>
+      <div class="pt" style="left:65%;animation-delay:1s"></div>
+      <div class="pt" style="left:85%;animation-delay:5s;width:3px;height:3px;"></div>
+      <div class="pt" style="left:95%;animation-delay:3s"></div>
+    </div>
+  </div>
+
+  <div style="position:relative;z-index:2">
+
+    <!-- NAV -->
+    <nav
+      style="position:fixed;top:0;left:0;right:0;z-index:100;padding:.65rem 1rem;background:rgba(7,7,10,.88);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,.03)">
+      <div style="max-width:1060px;margin:auto;display:flex;align-items:center;justify-content:space-between">
+        <a href="#" style="text-decoration:none; display:flex; align-items:center" class="hf" aria-label="Futurist">
+          <picture>
+            <source srcset="/logo-openclaw.webp" type="image/webp">
+            <img src="/logo-openclaw.png" alt="OpenClaw" style="height:32px;width:auto;display:block">
+          </picture>
+        </a>
+        <div id="nav-links" style="display:none;align-items:center;gap:1.25rem">
+          <a href="#what" style="color:var(--mt);text-decoration:none;font-size:.82rem;transition:color .3s"
+            onmouseover="this.style.color=\'#fff\'" onmouseout="this.style.color=\'var(--mt)\'">Что это</a>
+          <a href="#cases" style="color:var(--mt);text-decoration:none;font-size:.82rem;transition:color .3s"
+            onmouseover="this.style.color=\'#fff\'" onmouseout="this.style.color=\'var(--mt)\'">Кейсы</a>
+          <a href="#modules" style="color:var(--mt);text-decoration:none;font-size:.82rem;transition:color .3s"
+            onmouseover="this.style.color=\'#fff\'" onmouseout="this.style.color=\'var(--mt)\'">Агенты</a>
+
+          <a href="#faq" style="color:var(--mt);text-decoration:none;font-size:.82rem;transition:color .3s"
+            onmouseover="this.style.color=\'#fff\'" onmouseout="this.style.color=\'var(--mt)\'">FAQ</a>
+        </div>
+        <a href="#booking" class="bm"
+          style="padding:.55rem 1.1rem;font-size:.7rem;border-radius:9px"><span>Записаться</span></a>
+      </div>
+    </nav>
+
+    <!-- ═══════════════ HERO ═══════════════ -->
+    <section
+      style="min-height:100vh;display:flex;align-items:center;position:relative;padding:5.5rem 1rem 3.5rem;overflow:hidden">
+      <div class="gbg"></div>
+      <div class="pts">
+        <div class="pt" style="left:8%;top:18%;animation-delay:0s"></div>
+        <div class="pt" style="left:22%;top:55%;animation-delay:1.5s"></div>
+        <div class="pt" style="left:48%;top:25%;animation-delay:3s"></div>
+        <div class="pt" style="left:68%;top:65%;animation-delay:.5s"></div>
+        <div class="pt" style="left:82%;top:12%;animation-delay:2s"></div>
+        <div class="pt" style="left:12%;top:75%;animation-delay:4s"></div>
+        <div class="pt" style="left:58%;top:8%;animation-delay:2.5s"></div>
+        <div class="pt" style="left:88%;top:45%;animation-delay:1s"></div>
+        <div class="pt" style="left:35%;top:85%;animation-delay:3.5s"></div>
+        <div class="pt" style="left:72%;top:35%;animation-delay:4.5s"></div>
+      </div>
+      <div id="hero-meteors" style="position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:0"></div>
+      <div style="max-width:760px;margin:auto;text-align:center;position:relative">
+        <div class="rv"><span class="sl">OpenClaw для бизнеса</span></div>
+        <h1 class="rv" style="font-size:clamp(1.8rem,9vw,4.5rem);font-family:'Space Grotesk', sans-serif, sans-serif;font-weight:900;color:#fff;line-height:1.15;letter-spacing:-0.04em;margin-top:1.5rem">
+            Ваш цифровой<br>
+            <span class="grad-text">сотрудник 🦀</span>
+        </h1>
+        <div id="hero-title-placeholder"></div>
+        <p class="rv d2"
+          style="font-size:clamp(1rem,2.5vw,1.1rem);color:var(--mt);margin-top:1.5rem;max-width:650px;margin-left:auto;margin-right:auto;line-height:1.7">
+          Настроим команду автономных AI-агентов, которые управляют почтой, контентом, аналитикой и закупками через ваш
+          мессенджер. 24/7. На вашем сервере. Без подписок.
+        </p>
+        <div class="rv d3" style="margin-top:2.5rem;display:flex;gap:1rem;justify-content:center;flex-wrap:wrap">
+          <a href="#booking" class="bm"><span>Бесплатная консультация</span></a>
+          <a href="#what" class="bg"><span>Узнать больше</span></a>
+        </div>
+        <div class="rv d4"
+          style="margin-top:3.5rem;display:flex;gap:2rem;justify-content:center;flex-wrap:wrap;padding-top:2.5rem;border-top:1px solid rgba(255,255,255,.04)">
+          <div style="text-align:center;max-width:200px">
+            <div style="font-size:clamp(1.5rem,3vw,2rem);font-weight:900;color:#fff;font-family:'Space Grotesk', sans-serif, sans-serif">14 дней</div>
+            <div style="font-size:.75rem;color:var(--mt);margin-top:.5rem;text-transform:uppercase;letter-spacing:.1em;line-height:1.4">
+              Срок запуска AI-команды</div>
+          </div>
+          <div style="text-align:center;max-width:200px">
+            <div style="font-size:clamp(1.5rem,3vw,2rem);font-weight:900;color:#fff;font-family:'Space Grotesk', sans-serif, sans-serif">до 40%</div>
+            <div style="font-size:.75rem;color:var(--mt);margin-top:.5rem;text-transform:uppercase;letter-spacing:.1em;line-height:1.4">
+              Снижение ФОТ на рутине</div>
+          </div>
+          <div style="text-align:center;max-width:200px">
+            <div style="font-size:clamp(1.5rem,3vw,2rem);font-weight:900;color:#fff;font-family:'Space Grotesk', sans-serif, sans-serif">24 / 7</div>
+            <div style="font-size:.75rem;color:var(--mt);margin-top:.5rem;text-transform:uppercase;letter-spacing:.1em;line-height:1.4">
+              Абсолютная автономность</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════ WHAT IS ═══════════════ -->
+    <section id="what"
+      style="position:relative;padding:6rem 1rem;background:linear-gradient(180deg,transparent 0%,rgba(41,226,255,.01) 50%,transparent 100%)">
+      <div style="max-width:1060px;margin:auto">
+        <div style="text-align:center;margin-bottom:3rem">
+          <span class="sl rv" style="display:inline-block">Что такое OpenClaw</span>
+          <h2 class="rv d1" style="font-size:clamp(1.75rem,4vw,2.5rem);margin-top:1rem;font-weight:800;color:#fff">Ваш
+            цифровой сотрудник</h2>
+        </div>
+
+        <div class="bento-grid rv d2"
+          style="display:grid;grid-template-columns:repeat(3, 1fr);gap:1.5rem;margin-bottom:4rem;">
+          <div class="bento-card"
+            style="grid-column: span 2; background:rgba(255,255,255,.015);border:1px solid rgba(255,255,255,.05);border-radius:24px;padding:2.5rem;position:relative;overflow:hidden;transition:all .4s">
+            <div style="font-size:2rem;margin-bottom:1.5rem"><i class="ph-duotone ph-brain" style="color:var(--accent)"></i></div>
+            <h3 style="font-family:'Space Grotesk', sans-serif;font-weight:700;color:#fff;font-size:1.3rem;margin-bottom:1rem">
+              Абсолютная
+              автономность</h3>
+            <p style="color:var(--mt);font-size:.95rem;line-height:1.6">OpenClaw — это open-source платформа нового
+              поколения для запуска автономных AI-агентов. Он работает на вашем сервере круглосуточно: читает почту,
+              готовит отчёты, мониторит конкурентов, ведёт переговоры и пишет контент <b>без вашего участия</b>.</p>
+          </div>
+          <div class="bento-card"
+            style="background:rgba(255,255,255,.015);border:1px solid rgba(255,255,255,.05);border-radius:24px;padding:2.5rem;display:flex;flex-direction:column;justify-content:center;transition:all .4s">
+            <div style="font-size:clamp(2.5rem,4vw,3.5rem);font-family:'Space Grotesk', sans-serif;font-weight:900;color:var(--accent)"
+              data-count="80000">80000+</div>
+            <p style="color:var(--t);font-weight:600;margin-top:.5rem">Звёзд на GitHub</p>
+            <p style="color:var(--mt);font-size:.85rem;margin-top:.5rem;line-height:1.5">Самый быстрорастущий AI-проект
+              в
+              истории.</p>
+          </div>
+          <div class="bento-card"
+            style="grid-column: span 3; background:linear-gradient(135deg, rgba(124,58,237,.05), rgba(41,226,255,.02));border:1px solid rgba(124,58,237,.15);border-radius:24px;padding:2.5rem;display:grid;grid-template-columns:1.5fr 2fr;gap:2rem;align-items:center;transition:all .4s">
+            <div>
+              <h3 style="font-family:'Space Grotesk', sans-serif;font-weight:700;color:#fff;font-size:1.3rem;margin-bottom:.5rem">Ему не
+                нужны промпты</h3>
+            </div>
+            <div>
+              <p style="color:var(--mt);font-size:.95rem;line-height:1.6"><span
+                  style="color:#fff;font-weight:600">Главное
+                  отличие от ChatGPT и Claude:</span> OpenClaw <b>не ждёт вашего запроса</b>. Он действует сам:
+                запускает
+                задачи по расписанию, реагирует на события, помнит контекст между сессиями и управляет инструментами
+                напрямую.</p>
+            </div>
+          </div>
+        </div>
+
+        <div style="text-align:center;margin-bottom:2.5rem">
+          <h3 class="rv d2" style="font-size:1.5rem;color:#fff;font-family:'Space Grotesk', sans-serif;font-weight:700">Три столпа
+            технологии</h3>
+        </div>
+        <div class="what-grid">
+          <div class="what-card rv d2"
+            style="background:linear-gradient(135deg,rgba(124,58,237,.1),rgba(41,226,255,.05))">
+            <div style="margin-bottom:1.5rem">
+              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="animation: pulse-ring 2s infinite">
+                <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" fill="rgba(41,226,255,0.2)"/>
+              </svg>
+            </div>
+            <h3 style="font-family:'Space Grotesk', sans-serif;font-weight:700;color:#fff;margin-bottom:.5rem">Автономность 24/7</h3>
+            <p style="color:var(--mt);font-size:.9rem;line-height:1.6">Агент работает в фоне по расписанию. Утренние
+              сводки, мониторинг цен, отслеживание упоминаний бренда — всё происходит автоматически, до 341 сессии в
+              неделю.</p>
+          </div>
+
+          <div class="what-card rv d3"
+            style="background:linear-gradient(135deg,rgba(244,63,94,.1),rgba(41,226,255,.05))">
+            <div style="margin-bottom:1.5rem">
+              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#f43f5e" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="animation: float 3s ease-in-out infinite">
+                <rect x="3" y="11" width="18" height="10" rx="2" fill="rgba(244,63,94,0.1)"/>
+                <circle cx="12" cy="5" r="2" fill="#f43f5e"/>
+                <path d="M12 7v4" />
+                <line x1="8" y1="16" x2="8" y2="16.01" stroke-width="3" />
+                <line x1="16" y1="16" x2="16" y2="16.01" stroke-width="3" />
+              </svg>
+            </div>
+            <h3 style="font-family:'Space Grotesk', sans-serif;font-weight:700;color:#fff;margin-bottom:.5rem">Команда агентов</h3>
+            <p style="color:var(--mt);font-size:.9rem;line-height:1.6">Не один универсальный бот, а несколько
+              специализированных агентов. Администратор, маркетолог, аналитик, закупщик — каждый со своей ролью, моделью
+              AI и каналом связи.</p>
+          </div>
+
+          <div class="what-card rv d4"
+            style="background:linear-gradient(135deg,rgba(16,185,129,.1),rgba(41,226,255,.05))">
+            <div style="margin-bottom:1.5rem">
+              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="animation: pulse-ring 3s infinite">
+                <rect x="2" y="2" width="20" height="8" rx="2" fill="rgba(16,185,129,0.1)"/>
+                <rect x="2" y="14" width="20" height="8" rx="2" fill="rgba(16,185,129,0.1)"/>
+                <line x1="6" y1="6" x2="6" y2="6.01" stroke-width="3" />
+                <line x1="6" y1="18" x2="6" y2="18.01" stroke-width="3" />
+              </svg>
+            </div>
+            <h3 style="font-family:'Space Grotesk', sans-serif;font-weight:700;color:#fff;margin-bottom:.5rem">Ваш сервер, ваши данные
+            </h3>
+            <p style="color:var(--mt);font-size:.9rem;line-height:1.6">Всё работает на изолированной VPS или Mac Mini.
+              Никакие данные не уходят в облако. Полное шифрование, ежедневные бекапы, отдельные аккаунты для каждого
+              агента — как для настоящих сотрудников.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════ CASES ═══════════════ -->
+    <section id="cases" style="position:relative;padding:6rem 1rem">
+      <div style="max-width:1060px;margin:auto">
+        <div style="text-align:center;margin-bottom:3rem">
+          <span class="sl rv" style="display:inline-block">Сценарии</span>
+          <h2 class="rv d1" style="font-size:clamp(1.75rem,4vw,2.5rem);margin-top:1rem;font-weight:800;color:#fff">
+            Бизнес-сценарии</h2>
+        </div>
+
+        <div class="cases-bento rv d2" style="display: grid; grid-template-columns: repeat(12, 1fr); gap: 1.5rem;">
+          
+          <!-- Card 1: Secretary (span 8) -->
+          <div class="bento-card bento-item" style="grid-column: span 8; background: rgba(255,255,255,0.015); border: 1px solid rgba(255,255,255,0.05); border-radius: 24px; padding: 2.5rem; position: relative; overflow: hidden; display: flex; flex-direction: column; justify-content: space-between;">
+            <div style="position:relative; z-index:2;">
+              <div style="display:flex; align-items:center; gap:1rem; margin-bottom:1rem;">
+                <div style="width:48px;height:48px;border-radius:12px;background:linear-gradient(135deg, rgba(41,226,255,0.2), transparent);display:flex;align-items:center;justify-content:center;border:1px solid rgba(41,226,255,0.2)">
+                  <span style="font-size:1.5rem"><i class="ph-duotone ph-envelope-simple" style="color:var(--accent)"></i></span>
+                </div>
+                <h3 style="font-family:'Space Grotesk', sans-serif;font-size:1.75rem;color:#fff;margin:0">AI-Секретарь</h3>
+              </div>
+              <p style="color:var(--mt);font-size:1.05rem;line-height:1.6; max-width:80%">Читает, сортирует и отвечает на письма от вашего имени. Управляет календарём, переносит встречи, создаёт события из писем. Утренняя сводка по 10 000 писем — за секунды.</p>
+            </div>
+            
+            <div style="margin-top:2rem; background:rgba(255,255,255,.02); border:1px solid rgba(255,255,255,.05); border-radius:16px; padding:1.5rem; position:relative; z-index:2; max-width: 400px;">
+              <div style="display:flex; justify-content:space-between; border-bottom:1px solid rgba(255,255,255,.1); padding-bottom:1rem; margin-bottom:1rem;">
+                <span style="font-family:'Space Grotesk', sans-serif; font-size:0.9rem; color:var(--accent);">Входящие (142)</span>
+                <span style="font-size:0.7rem; background:rgba(41,226,255,.1); color:var(--accent); padding:2px 8px; border-radius:12px;">AI Active</span>
+              </div>
+              <div style="display:flex; flex-direction:column; gap:0.75rem;">
+                <div style="background:rgba(255,255,255,.03); padding:1rem; border-radius:12px; display:flex; gap:1rem; align-items:center;">
+                  <div style="width:32px; height:32px; border-radius:50%; background:linear-gradient(135deg, var(--p), var(--accent)); flex-shrink:0;"></div>
+                  <div style="flex:1;"><div style="height:6px; width:40%; background:rgba(255,255,255,.2); border-radius:4px; margin-bottom:6px;"></div><div style="height:4px; width:70%; background:rgba(255,255,255,.1); border-radius:4px;"></div></div>
+                  <span style="font-size:0.75rem; color:var(--g);"><i class="ph-duotone ph-check-circle"></i> Отвечено</span>
+                </div>
+              </div>
+            </div>
+            <div style="position:absolute; right:-50px; bottom:-50px; width:300px; height:300px; background:radial-gradient(circle, rgba(41,226,255,0.05) 0%, transparent 70%); pointer-events:none; z-index:1;"></div>
+          </div>
+
+          <!-- Card 2: Marketer (span 4) -->
+          <div class="bento-card bento-item" style="grid-column: span 4; background: rgba(255,255,255,0.015); border: 1px solid rgba(255,255,255,0.05); border-radius: 24px; padding: 2.5rem; position: relative; overflow: hidden; display: flex; flex-direction: column;">
+            <div style="display:flex; align-items:center; gap:1rem; margin-bottom:1rem;">
+              <div style="width:48px;height:48px;border-radius:12px;background:linear-gradient(135deg, rgba(124,58,237,0.2), transparent);display:flex;align-items:center;justify-content:center;border:1px solid rgba(124,58,237,0.2)">
+                <span style="font-size:1.5rem"><i class="ph-duotone ph-device-mobile-speaker" style="color:#34d399"></i></span>
+              </div>
+              <h3 style="font-family:'Space Grotesk', sans-serif;font-size:1.5rem;color:#fff;margin:0">Маркетолог</h3>
+            </div>
+            <p style="color:var(--mt);font-size:0.95rem;line-height:1.6; margin-bottom:1.5rem">Пишет посты в стиле канала, анализирует вовлечённость. Понимает голосовые команды.</p>
+            <div style="margin-top:auto; background:rgba(255,255,255,.02); border:1px solid rgba(255,255,255,.05); border-radius:16px; padding:1.2rem;">
+              <div style="align-self:flex-end; background:rgba(124,58,237,.2); padding:0.75rem; border-radius:12px 12px 0 12px; font-size:0.8rem; color:#fff; margin-bottom:0.5rem"><i class="ph-duotone ph-microphone"></i> Напиши пост про AI...</div>
+              <div style="align-self:flex-start; background:rgba(255,255,255,.05); padding:0.75rem; border-radius:12px 12px 12px 0; font-size:0.8rem; color:var(--mt);"><i class="ph-duotone ph-sparkle"></i> Черновик готов.</div>
+            </div>
+          </div>
+
+          <!-- Card 3: Analyst (span 4) -->
+          <div class="bento-card bento-item" style="grid-column: span 4; background: rgba(255,255,255,0.015); border: 1px solid rgba(255,255,255,0.05); border-radius: 24px; padding: 2.5rem; position: relative; overflow: hidden; display: flex; flex-direction: column;">
+            <div style="display:flex; align-items:center; gap:1rem; margin-bottom:1rem;">
+              <div style="width:48px;height:48px;border-radius:12px;background:linear-gradient(135deg, rgba(244,63,94,0.2), transparent);display:flex;align-items:center;justify-content:center;border:1px solid rgba(244,63,94,0.2)">
+                <span style="font-size:1.5rem"><i class="ph-duotone ph-chart-line-up" style="color:#f59e0b"></i></span>
+              </div>
+              <h3 style="font-family:'Space Grotesk', sans-serif;font-size:1.5rem;color:#fff;margin:0">Аналитик</h3>
+            </div>
+            <p style="color:var(--mt);font-size:0.95rem;line-height:1.6; margin-bottom:1.5rem">Утренние сводки с метриками, отчёты, мониторинг конкурентов и цен. Проактивные алерты.</p>
+            <div style="margin-top:auto; display:flex; gap:1rem;">
+              <div style="flex:1; background:rgba(255,255,255,.03); padding:1rem; border-radius:12px; text-align:center;">
+                <div style="font-size:0.7rem; color:var(--mt); margin-bottom:0.2rem;">ROMI</div>
+                <div style="color:var(--g); font-size:1.25rem; font-family:'Space Grotesk', sans-serif;">+340%</div>
+              </div>
+              <div style="flex:1; background:rgba(255,255,255,.03); padding:1rem; border-radius:12px; text-align:center;">
+                <div style="font-size:0.7rem; color:var(--mt); margin-bottom:0.2rem;">CPA</div>
+                <div style="color:var(--accent); font-size:1.25rem; font-family:'Space Grotesk', sans-serif;">-22%</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 4: Support (span 4) -->
+          <div class="bento-card bento-item" style="grid-column: span 4; background: rgba(255,255,255,0.015); border: 1px solid rgba(255,255,255,0.05); border-radius: 24px; padding: 2.5rem; position: relative; overflow: hidden; display: flex; flex-direction: column;">
+            <div style="display:flex; align-items:center; gap:1rem; margin-bottom:1rem;">
+              <div style="width:48px;height:48px;border-radius:12px;background:linear-gradient(135deg, rgba(16,185,129,0.2), transparent);display:flex;align-items:center;justify-content:center;border:1px solid rgba(16,185,129,0.2)">
+                <span style="font-size:1.5rem"><i class="ph-duotone ph-handshake" style="color:#a78bfa"></i></span>
+              </div>
+              <h3 style="font-family:'Space Grotesk', sans-serif;font-size:1.5rem;color:#fff;margin:0">Саппорт 24/7</h3>
+            </div>
+            <p style="color:var(--mt);font-size:0.95rem;line-height:1.6; margin-bottom:1.5rem">Решает типовые проблемы клиентов моментально. Сложные кейсы передаёт операторам.</p>
+            <div style="margin-top:auto; background:rgba(255,255,255,.02); border:1px solid rgba(255,255,255,.05); border-radius:16px; padding:1.2rem;">
+               <div style="display:flex; justify-content:space-between; border-bottom:1px solid rgba(255,255,255,.1); padding-bottom:0.5rem; margin-bottom:0.5rem;">
+                <span style="font-family:'Space Grotesk', sans-serif; font-size:0.9rem; color:var(--mt);">Тикет #9401</span>
+                <span style="font-size:0.7rem; color:var(--g);"><i class="ph-duotone ph-check-circle"></i> Решён</span>
+              </div>
+              <div style="font-size:0.8rem; color:#fff">Оформлен возврат средств (AI)</div>
+            </div>
+          </div>
+
+          <!-- Card 5: Buyer (span 4) -->
+          <div class="bento-card bento-item" style="grid-column: span 4; background: rgba(255,255,255,0.015); border: 1px solid rgba(255,255,255,0.05); border-radius: 24px; padding: 2.5rem; position: relative; overflow: hidden; display: flex; flex-direction: column;">
+             <div style="display:flex; align-items:center; gap:1rem; margin-bottom:1rem;">
+              <div style="width:48px;height:48px;border-radius:12px;background:linear-gradient(135deg, rgba(245,158,11,0.2), transparent);display:flex;align-items:center;justify-content:center;border:1px solid rgba(245,158,11,0.2)">
+                <span style="font-size:1.5rem"><i class="ph-duotone ph-shopping-cart" style="color:#f43f5e"></i></span>
+              </div>
+              <h3 style="font-family:'Space Grotesk', sans-serif;font-size:1.5rem;color:#fff;margin:0">Закупщик</h3>
+            </div>
+            <p style="color:var(--mt);font-size:0.95rem;line-height:1.6; margin-bottom:1.5rem">Автоматизирует поиск поставщиков, сравнивает прайсы, торгуется за скидки.</p>
+            <div style="margin-top:auto; background:rgba(255,255,255,.02); border:1px solid rgba(255,255,255,.05); border-radius:16px; padding:1.2rem; display:flex; justify-content:space-between; align-items:center">
+              <div>
+                <div style="font-size:0.7rem; color:var(--mt);">Смета проекта</div>
+                <div style="font-family:'Space Grotesk', sans-serif; font-size:0.9rem; color:#fff; text-decoration:line-through;">$14,500</div>
+              </div>
+              <div style="text-align:right">
+                <div style="font-size:0.7rem; color:var(--g);">После торгов AI</div>
+                <div style="font-family:'Space Grotesk', sans-serif; font-size:1.2rem; color:var(--g);">$12,760</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 6: Hunter B2B (span 8) -->
+          <div class="bento-card bento-item" style="grid-column: span 8; background: rgba(255,255,255,0.015); border: 1px solid rgba(255,255,255,0.05); border-radius: 24px; padding: 2.5rem; position: relative; overflow: hidden; display: flex; flex-direction: column; justify-content: space-between;">
+             <div style="position:relative; z-index:2;">
+              <div style="display:flex; align-items:center; gap:1rem; margin-bottom:1rem;">
+                <div style="width:48px;height:48px;border-radius:12px;background:linear-gradient(135deg, rgba(16,185,129,0.2), transparent);display:flex;align-items:center;justify-content:center;border:1px solid rgba(16,185,129,0.2)">
+                  <span style="font-size:1.5rem"><i class="ph-duotone ph-crosshair" style="color:var(--accent)"></i></span>
+                </div>
+                <h3 style="font-family:'Space Grotesk', sans-serif;font-size:1.75rem;color:#fff;margin:0">Хантер B2B</h3>
+              </div>
+              <p style="color:var(--mt);font-size:1.05rem;line-height:1.6; max-width:80%">Собирает базу целевых контактов, пишет гипер-персонализированные письма, ведёт follow-up цепочки. Назначает встречи прямо в календарь продажникам.</p>
+            </div>
+            
+            <div style="margin-top:2rem; background:rgba(255,255,255,.02); border:1px solid rgba(255,255,255,.05); border-radius:16px; padding:1.5rem; position:relative; z-index:2; max-width: 500px; display:flex; gap:1.5rem; align-items:flex-end">
+              <div style="flex:1; text-align:center">
+                 <div style="height:80px; background:rgba(255,255,255,.05); border-radius:8px 8px 0 0; margin-bottom:0.5rem"></div>
+                 <div style="font-family:'Space Grotesk', sans-serif; font-size:1.1rem; color:#fff;">1,240</div>
+                 <div style="font-size:0.65rem; color:var(--mt); text-transform:uppercase">Собрано Lead</div>
+              </div>
+              <div style="flex:1; text-align:center">
+                 <div style="height:50px; background:rgba(41,226,255,.2); border-radius:8px 8px 0 0; margin-bottom:0.5rem"></div>
+                 <div style="font-family:'Space Grotesk', sans-serif; font-size:1.1rem; color:#fff;">850</div>
+                 <div style="font-size:0.65rem; color:var(--mt); text-transform:uppercase">Писем отправлено</div>
+              </div>
+              <div style="flex:1; text-align:center">
+                 <div style="height:25px; background:rgba(16,185,129,.4); border-radius:8px 8px 0 0; margin-bottom:0.5rem"></div>
+                 <div style="font-family:'Space Grotesk', sans-serif; font-size:1.1rem; color:#fff;">42</div>
+                 <div style="font-size:0.65rem; color:var(--mt); text-transform:uppercase">Встреч назначено</div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Card 7: Recruiter (span 4) -->
+          <div class="bento-card bento-item" style="grid-column: span 4; background: rgba(255,255,255,0.015); border: 1px solid rgba(255,255,255,0.05); border-radius: 24px; padding: 2.5rem; position: relative; overflow: hidden; display: flex; flex-direction: column;">
+            <div style="display:flex; align-items:center; gap:1rem; margin-bottom:1rem;">
+              <div style="width:48px;height:48px;border-radius:12px;background:linear-gradient(135deg, rgba(244,63,94,0.2), transparent);display:flex;align-items:center;justify-content:center;border:1px solid rgba(244,63,94,0.2)">
+                <span style="font-size:1.5rem"><i class="ph-duotone ph-users-three" style="color:#34d399"></i></span>
+              </div>
+              <h3 style="font-family:'Space Grotesk', sans-serif;font-size:1.5rem;color:#fff;margin:0">Рекрутер</h3>
+            </div>
+            <p style="color:var(--mt);font-size:0.95rem;line-height:1.6; margin-bottom:1.5rem">Сорсит кандидатов, проводит первичные скрининги в Telegram, оценивает hard skills.</p>
+            <div style="margin-top:auto; background:rgba(255,255,255,.02); border:1px solid rgba(255,255,255,.05); border-radius:16px; padding:1.2rem;">
+              <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:0.5rem">
+                <span style="color:#fff; font-size:0.8rem">Алексей С. (Python)</span>
+                <span style="color:var(--g); font-size:0.8rem">Match 94%</span>
+              </div>
+              <div style="height:6px; background:rgba(255,255,255,.1); border-radius:4px; overflow:hidden">
+                <div style="width:94%; height:100%; background:var(--g)"></div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ═══════════════ ABOUT ME / VIDEO ═══════════════ -->
+    <section
+      style="position:relative;padding:6rem 1rem;background:linear-gradient(180deg,transparent 0%,rgba(41,226,255,.01) 50%,transparent 100%)">
+      <div style="max-width:1060px;margin:auto">
+        <div style="text-align:center;margin-bottom:4rem">
+          <span class="sl rv" style="display:inline-block">Процесс</span>
+          <h2 class="rv d1" style="font-size:clamp(1.75rem,4vw,2.5rem);margin-top:1rem;font-weight:800;color:#fff">От
+            идеи
+            к результату</h2>
+        </div>
+
+        <div class="carousel-wrap rv d2"
+          style="display:flex;gap:1.5rem;overflow-x:auto;padding-bottom:2rem;scroll-snap-type:x mandatory;scroll-padding:1rem;">
+
+          <div class="pc" style="flex:0 0 300px;scroll-snap-align:start;position:relative;">
+            <div style="height:180px;border-radius:16px;background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.05);margin-bottom:1.5rem;position:relative;overflow:hidden;">
+              <video autoplay loop muted playsinline style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;opacity:0.6;z-index:1;">
+                <source src="assets/videos/z1.mp4" type="video/mp4">
+              </video>
+              <div class="sh" style="position:absolute;inset:0;z-index:2"></div>
+            </div>
+            <h3 style="font-family:'Space Grotesk', sans-serif;font-weight:700;color:#fff;margin-bottom:.5rem">1 — Диагностика
+              бизнеса</h3>
+            <p style="color:var(--mt);font-size:.9rem;line-height:1.6">Созвон 30 минут. Разбираем ваши процессы, инструменты, задачи. Определяем, каких агентов создать и какие задачи делегировать.</p>
+          </div>
+
+          <div class="pc" style="flex:0 0 300px;scroll-snap-align:start;position:relative;">
+            <div style="height:180px;border-radius:16px;background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.05);margin-bottom:1.5rem;position:relative;overflow:hidden;">
+              <video autoplay loop muted playsinline style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;opacity:0.6;z-index:1;">
+                <source src="assets/videos/z2.mp4" type="video/mp4">
+              </video>
+              <div class="sh" style="position:absolute;inset:0;z-index:2"></div>
+            </div>
+            <h3 style="font-family:'Space Grotesk', sans-serif;font-weight:700;color:#fff;margin-bottom:.5rem">2 — Проектирование процессов</h3>
+            <p style="color:var(--mt);font-size:.9rem;line-height:1.6">Рисуем карту процессов в Miro: роли агентов, триггеры, связи между системами. Визуализируем, как всё будет работать до начала разработки.</p>
+          </div>
+
+          <div class="pc" style="flex:0 0 300px;scroll-snap-align:start;position:relative;">
+            <div style="height:180px;border-radius:16px;background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.05);margin-bottom:1.5rem;position:relative;overflow:hidden;">
+              <video autoplay loop muted playsinline style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;opacity:0.6;z-index:1;">
+                <source src="assets/videos/z3.mp4" type="video/mp4">
+              </video>
+              <div class="sh" style="position:absolute;inset:0;z-index:2"></div>
+            </div>
+            <h3 style="font-family:'Space Grotesk', sans-serif;font-weight:700;color:#fff;margin-bottom:.5rem">3 — Сервер и деплой</h3>
+            <p style="color:var(--mt);font-size:.9rem;line-height:1.6">Выделенная VPS или Mac Mini, Docker-контейнер, шифрование, бекапы. Создаём отдельные аккаунты для каждого агента.</p>
+          </div>
+
+          <div class="pc" style="flex:0 0 300px;scroll-snap-align:start;position:relative;">
+            <div style="height:180px;border-radius:16px;background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.05);margin-bottom:1.5rem;position:relative;overflow:hidden;">
+              <video autoplay loop muted playsinline style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;opacity:0.6;z-index:1;">
+                <source src="assets/videos/z4.mp4" type="video/mp4">
+              </video>
+              <div class="sh" style="position:absolute;inset:0;z-index:2"></div>
+            </div>
+            <h3 style="font-family:'Space Grotesk', sans-serif;font-weight:700;color:#fff;margin-bottom:.5rem">4 — Навыки</h3>
+            <p style="color:var(--mt);font-size:.9rem;line-height:1.6">Подключаем Gmail, Calendar, Drive, n8n, cron-задачи. Настраиваем каждого агента: роль, модель, канал связи и поведение.</p>
+          </div>
+
+          <div class="pc" style="flex:0 0 300px;scroll-snap-align:start;position:relative;">
+            <div style="height:180px;border-radius:16px;background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.05);margin-bottom:1.5rem;position:relative;overflow:hidden;">
+              <video autoplay loop muted playsinline style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;opacity:0.6;z-index:1;">
+                <source src="assets/videos/z5.mp4" type="video/mp4">
+              </video>
+              <div class="sh" style="position:absolute;inset:0;z-index:2"></div>
+            </div>
+            <h3 style="font-family:'Space Grotesk', sans-serif;font-weight:700;color:#fff;margin-bottom:.5rem">5 — Запуск и обучение</h3>
+            <p style="color:var(--mt);font-size:.9rem;line-height:1.6">Проводим по каждому агенту, отвечаем на вопросы, дорабатываем навыки. Поддержка от 1 до 4 недель.</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    
+
+
+
+    <!-- ═══════════════ INTEGRATIONS (Curved Loop) ═══════════════ -->
+    <section id="integrations" style="position:relative;padding:6rem 1rem;overflow:hidden">
+      <div style="max-width:1060px;margin:auto">
+        <div style="text-align:center;margin-bottom:3rem">
+          <span class="sl rv" style="display:inline-block">Интеграции</span>
+          <h2 class="rv d1" style="font-size:clamp(1.75rem,4vw,2.5rem);margin-top:1rem;font-weight:800;color:#fff">Работает со <span style="color:var(--accent)">всем</span>, что вы используете</h2>
+        </div>
+
+        <!-- Marquee Ticker with 3D Perspective -->
+        <div class="rv d2" style="position:relative;perspective:800px">
+          <!-- Glow haze -->
+          <div style="position:absolute;inset:0;pointer-events:none;display:flex;align-items:center;justify-content:center;z-index:2">
+            <div style="width:200px;height:200px;border-radius:50%;background:radial-gradient(circle, rgba(41,226,255,0.08) 0%, transparent 70%)"></div>
+          </div>
+
+          <!-- Center counter -->
+          <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:3;pointer-events:none">
+            <span style="font-family:'Space Grotesk',sans-serif;font-size:clamp(2.5rem,5vw,4rem);font-weight:900;background:linear-gradient(135deg,#29e2ff,#7c3aed,#f43f5e);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1;filter:drop-shadow(0 0 20px rgba(41,226,255,0.3))">20+</span>
+            <span style="font-family:'Space Grotesk',sans-serif;font-size:0.85rem;font-weight:600;color:rgba(255,255,255,0.4);letter-spacing:4px;margin-top:0.25rem">СИСТЕМ</span>
+          </div>
+
+          <!-- Marquee rows with 3D curve -->
+          <div style="transform:rotateX(12deg);transform-style:preserve-3d">
+
+            <!-- Row 1 → right -->
+            <div class="marquee-row" style="margin-bottom:1.25rem">
+              <div class="marquee-track marquee-right">
+                <span class="marquee-item"><i class="ph-duotone ph-chats-circle"></i> Мессенджеры</span>
+                <span class="marquee-item"><i class="ph-duotone ph-envelope-simple"></i> Почта</span>
+                <span class="marquee-item"><i class="ph-duotone ph-calendar-dots"></i> Календарь</span>
+                <span class="marquee-item"><i class="ph-duotone ph-users-three"></i> CRM</span>
+                <span class="marquee-item"><i class="ph-duotone ph-file-text"></i> Документы</span>
+                <span class="marquee-item"><i class="ph-duotone ph-kanban"></i> Управление задачами</span>
+                <span class="marquee-item"><i class="ph-duotone ph-lightning"></i> Автоматизация</span>
+                <!-- duplicate for seamless loop -->
+                <span class="marquee-item"><i class="ph-duotone ph-chats-circle"></i> Мессенджеры</span>
+                <span class="marquee-item"><i class="ph-duotone ph-envelope-simple"></i> Почта</span>
+                <span class="marquee-item"><i class="ph-duotone ph-calendar-dots"></i> Календарь</span>
+                <span class="marquee-item"><i class="ph-duotone ph-users-three"></i> CRM</span>
+                <span class="marquee-item"><i class="ph-duotone ph-file-text"></i> Документы</span>
+                <span class="marquee-item"><i class="ph-duotone ph-kanban"></i> Управление задачами</span>
+                <span class="marquee-item"><i class="ph-duotone ph-lightning"></i> Автоматизация</span>
+              </div>
+            </div>
+
+            <!-- Row 2 ← left (accent color) -->
+            <div class="marquee-row" style="margin-bottom:1.25rem">
+              <div class="marquee-track marquee-left">
+                <span class="marquee-item marquee-accent"><i class="ph-duotone ph-pencil-line"></i> Контент</span>
+                <span class="marquee-item marquee-accent"><i class="ph-duotone ph-chart-line-up"></i> Аналитика</span>
+                <span class="marquee-item marquee-accent"><i class="ph-duotone ph-microphone-stage"></i> Голос</span>
+                <span class="marquee-item marquee-accent"><i class="ph-duotone ph-buildings"></i> ERP / Бухгалтерия</span>
+                <span class="marquee-item marquee-accent"><i class="ph-duotone ph-phone-call"></i> Телефония</span>
+                <span class="marquee-item marquee-accent"><i class="ph-duotone ph-hard-drives"></i> Инфраструктура</span>
+                <!-- duplicate -->
+                <span class="marquee-item marquee-accent"><i class="ph-duotone ph-pencil-line"></i> Контент</span>
+                <span class="marquee-item marquee-accent"><i class="ph-duotone ph-chart-line-up"></i> Аналитика</span>
+                <span class="marquee-item marquee-accent"><i class="ph-duotone ph-microphone-stage"></i> Голос</span>
+                <span class="marquee-item marquee-accent"><i class="ph-duotone ph-buildings"></i> ERP / Бухгалтерия</span>
+                <span class="marquee-item marquee-accent"><i class="ph-duotone ph-phone-call"></i> Телефония</span>
+                <span class="marquee-item marquee-accent"><i class="ph-duotone ph-hard-drives"></i> Инфраструктура</span>
+              </div>
+            </div>
+
+            <!-- Row 3 → right (muted) -->
+            <div class="marquee-row">
+              <div class="marquee-track marquee-right-slow">
+                <span class="marquee-item marquee-muted"><i class="ph-duotone ph-plugs-connected"></i> API</span>
+                <span class="marquee-item marquee-muted"><i class="ph-duotone ph-robot"></i> AI-модели</span>
+                <span class="marquee-item marquee-muted"><i class="ph-duotone ph-device-mobile"></i> Мобильные</span>
+                <span class="marquee-item marquee-muted"><i class="ph-duotone ph-shield-check"></i> Безопасность</span>
+                <span class="marquee-item marquee-muted"><i class="ph-duotone ph-cloud"></i> Облако</span>
+                <span class="marquee-item marquee-muted"><i class="ph-duotone ph-package"></i> Склад</span>
+                <span class="marquee-item marquee-muted"><i class="ph-duotone ph-globe-simple"></i> Веб-сервисы</span>
+                <!-- duplicate -->
+                <span class="marquee-item marquee-muted"><i class="ph-duotone ph-plugs-connected"></i> API</span>
+                <span class="marquee-item marquee-muted"><i class="ph-duotone ph-robot"></i> AI-модели</span>
+                <span class="marquee-item marquee-muted"><i class="ph-duotone ph-device-mobile"></i> Мобильные</span>
+                <span class="marquee-item marquee-muted"><i class="ph-duotone ph-shield-check"></i> Безопасность</span>
+                <span class="marquee-item marquee-muted"><i class="ph-duotone ph-cloud"></i> Облако</span>
+                <span class="marquee-item marquee-muted"><i class="ph-duotone ph-package"></i> Склад</span>
+                <span class="marquee-item marquee-muted"><i class="ph-duotone ph-globe-simple"></i> Веб-сервисы</span>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Edge fade masks -->
+          <div style="position:absolute;top:0;left:0;bottom:0;width:120px;background:linear-gradient(to right,var(--bg),transparent);z-index:4;pointer-events:none"></div>
+          <div style="position:absolute;top:0;right:0;bottom:0;width:120px;background:linear-gradient(to left,var(--bg),transparent);z-index:4;pointer-events:none"></div>
+        </div>
+      </div>
+    </section>
+
+
+
+    <!-- ═══════════════ FAQ ═══════════════ -->
+    <section id="faq"
+      style="position:relative;padding:6rem 1rem;background:linear-gradient(180deg,transparent 0%,rgba(41,226,255,.01) 50%,transparent 100%)">
+      <div style="max-width:800px;margin:auto">
+        <div style="text-align:center;margin-bottom:4rem">
+          <span class="sl rv" style="display:inline-block">Вопросы</span>
+          <h2 class="rv d1" style="font-size:clamp(1.75rem,4vw,2.5rem);margin-top:1rem;font-weight:800;color:#fff">Часто
+            спрашивают</h2>
+        </div>
+
+        <div class="rv d2">
+          <div class="ai">
+            <div class="ah" onclick="tA(this)">
+              <span style="font-family:'Space Grotesk', sans-serif;font-weight:600;color:#fff;text-align:left">Что такое AI-агенты для бизнеса и чем они отличаются от ChatGPT?</span>
+              <div class="ax">+</div>
+            </div>
+            <div class="ab">
+              <p style="color:var(--mt);line-height:1.7">AI-агент — это автономная программа на базе искусственного интеллекта, которая выполняет реальные бизнес-задачи без постоянного участия человека. В отличие от ChatGPT, который работает только в режиме «вопрос-ответ», AI-агент OpenClaw действует проактивно: разбирает почту, управляет календарём, создаёт контент, анализирует данные и работает 24/7 на вашем собственном сервере. У каждого агента есть постоянная память, доступ к браузеру, файловой системе и API ваших бизнес-инструментов.</p>
+            </div>
+          </div>
+
+          <div class="ai">
+            <div class="ah" onclick="tA(this)">
+              <span style="font-family:'Space Grotesk', sans-serif;font-weight:600;color:#fff;text-align:left">Какие бизнес-процессы можно автоматизировать с помощью AI-агентов?</span>
+              <div class="ax">+</div>
+            </div>
+            <div class="ab">
+              <p style="color:var(--mt);line-height:1.7">AI-агенты автоматизируют большинство рутинных бизнес-процессов: обработку входящей почты (до 200+ писем в день), управление CRM и лидами, ведение календаря и планирование встреч, создание контента для социальных сетей, подготовку отчётов и аналитику, работу с документами и таблицами, мониторинг конкурентов, управление задачами команды, телефонию и обработку звонков. Каждый агент настраивается под конкретные процессы вашего бизнеса и интегрируется с Gmail, Telegram, amoCRM, Google Drive, n8n и другими системами.</p>
+            </div>
+          </div>
+
+          <div class="ai">
+            <div class="ah" onclick="tA(this)">
+              <span style="font-family:'Space Grotesk', sans-serif;font-weight:600;color:#fff;text-align:left">Безопасно ли доверять AI-агентам доступ к корпоративным данным?</span>
+              <div class="ax">+</div>
+            </div>
+            <div class="ab">
+              <p style="color:var(--mt);line-height:1.7">Да, безопасность — наш приоритет. OpenClaw разворачивается на вашей изолированной VPS, а не в облаке третьих лиц. Каждому агенту создаётся отдельный аккаунт с ограниченными правами по принципу наименьших привилегий — как для сотрудников. Агент всегда запрашивает подтверждение перед критическими действиями: отправкой сообщений, удалением файлов, сетевыми запросами. Все данные шифруются, выполняются ежедневные автоматические бекапы, есть лимиты на время выполнения задач и возможность мгновенной остановки любого агента.</p>
+            </div>
+          </div>
+
+          <div class="ai">
+            <div class="ah" onclick="tA(this)">
+              <span style="font-family:'Space Grotesk', sans-serif;font-weight:600;color:#fff;text-align:left">Сколько стоит внедрение и содержание AI-агентов для бизнеса?</span>
+              <div class="ax">+</div>
+            </div>
+            <div class="ab">
+              <p style="color:var(--mt);line-height:1.7">Стоимость внедрения зависит от количества агентов и сложности интеграций — от настройки одного агента до полноценной команды. Ежемесячные расходы на содержание: VPS-сервер $5–12/мес, токены AI-моделей $10–50/мес при активном использовании. Мы оптимизируем расходы маршрутизацией моделей: мощные модели (Claude Opus, GPT-4o) для сложных аналитических задач, облегчённые (Claude Haiku, GPT-4o-mini) для рутинных операций. Итого содержание команды AI-агентов обходится в 10–20 раз дешевле одного штатного сотрудника.</p>
+            </div>
+          </div>
+
+          <div class="ai">
+            <div class="ah" onclick="tA(this)">
+              <span style="font-family:'Space Grotesk', sans-serif;font-weight:600;color:#fff;text-align:left">Что нужно для внедрения AI-агентов в мой бизнес?</span>
+              <div class="ax">+</div>
+            </div>
+            <div class="ab">
+              <p style="color:var(--mt);line-height:1.7">Для старта не нужно ничего, кроме понимания ваших бизнес-задач. Мы берём на себя всю техническую часть: настройку VPS-сервера, развёртывание Docker-контейнеров, создание и обучение агентов, интеграцию с вашими существующими инструментами. Процесс внедрения занимает от 3 до 7 дней и включает диагностику бизнес-процессов, проектирование карты взаимодействий в Miro, настройку сервера, конфигурацию навыков агентов и обучение вашей команды. Вам нужен только мессенджер — Telegram или WhatsApp — для общения с агентами.</p>
+            </div>
+          </div>
+
+          <div class="ai">
+            <div class="ah" onclick="tA(this)">
+              <span style="font-family:'Space Grotesk', sans-serif;font-weight:600;color:#fff;text-align:left">Можно ли заменить сотрудников AI-агентами и насколько это надёжно?</span>
+              <div class="ax">+</div>
+            </div>
+            <div class="ab">
+              <p style="color:var(--mt);line-height:1.7">AI-агенты не заменяют сотрудников полностью, а берут на себя рутинные задачи, освобождая людей для стратегической работы. Один предприниматель с командой AI-агентов может выполнять работу, которую раньше делали 3–5 человек: ассистент, маркетолог, аналитик, администратор. Надёжность обеспечивается многоуровневой системой контроля: каждый агент работает в изолированной среде, все действия логируются, критические операции требуют подтверждения. При сбоях срабатывают автоматические механизмы восстановления. Поддержка и доработка агентов входят в тариф на первые 1–4 недели после запуска.</p>
+            </div>
+          </div>
+
+          <div class="ai">
+            <div class="ah" onclick="tA(this)">
+              <span style="font-family:'Space Grotesk', sans-serif;font-weight:600;color:#fff;text-align:left">Чем профессиональная настройка AI-агентов отличается от самостоятельной установки?</span>
+              <div class="ax">+</div>
+            </div>
+            <div class="ab">
+              <p style="color:var(--mt);line-height:1.7">Самостоятельная установка OpenClaw — это как установить операционную систему без настройки приложений. На фриланс-площадках предлагают «развернуть Docker за $10–100», но вы получите пустую оболочку без навыков, без интеграций, без оптимизации. Профессиональная настройка включает: аудит бизнес-процессов, проектирование архитектуры агентов, настройку ролей и навыков под ваши задачи, интеграцию с 20+ системами, оптимизацию расходов на AI-модели (маршрутизация между дорогими и дешёвыми моделями), настройку безопасности и бекапов, а также обучение вашей команды работе с агентами.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════ INTEGRATIONS ═══════════════ -->
+    <section id="about" style="position:relative;padding:6rem 1rem">
+      <div style="max-width:1060px;margin:auto">
+        <div class="rv d2"
+          style="background:linear-gradient(135deg,rgba(41,226,255,.03),rgba(124,58,237,.03));border:1px solid rgba(255,255,255,.06);border-radius:32px;padding:4rem;display:flex;gap:4rem;align-items:center;flex-wrap:wrap">
+
+          <div style="flex:1;min-width:300px">
+            <span class="sl" style="display:inline-block;margin-bottom:1rem">Обо мне</span>
+            <h2 style="font-size:clamp(2rem,4vw,3rem);margin-bottom:.75rem;font-weight:800;color:#fff;font-family:'Space Grotesk', sans-serif">Денис <span
+                style="color:var(--accent)">Футурист</span></h2>
+            
+            <div style="display:flex; flex-direction:column; gap:0.75rem; margin-bottom:2rem; margin-top:1.5rem">
+              <a href="https://futurist-ai.ru" target="_blank"
+                style="display:inline-flex;align-items:center;gap:0.5rem;padding:0.75rem 1.25rem;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:12px;color:#fff;text-decoration:none;font-weight:600;font-size:0.9rem;transition:all 0.3s;max-width:max-content"
+                onmouseover="this.style.background='rgba(41,226,255,0.1)';this.style.borderColor='rgba(41,226,255,0.3)';this.style.boxShadow='0 0 15px rgba(41,226,255,0.2)'" 
+                onmouseout="this.style.background='rgba(255,255,255,0.03)';this.style.borderColor='rgba(255,255,255,0.08)';this.style.boxShadow='none'">
+                <img src="/futuris-icon.png" alt="" style="width:20px;height:20px;border-radius:4px"> Агентство ИИ futurist-ai.ru
+              </a>
+              <a href="https://www.instagram.com/denis.futurist" target="_blank"
+                style="display:inline-flex;align-items:center;gap:0.5rem;padding:0.75rem 1.25rem;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:12px;color:#fff;text-decoration:none;font-weight:600;font-size:0.9rem;transition:all 0.3s;max-width:max-content"
+                onmouseover="this.style.background='rgba(244,63,94,0.1)';this.style.borderColor='rgba(244,63,94,0.3)';this.style.boxShadow='0 0 15px rgba(244,63,94,0.2)'" 
+                onmouseout="this.style.background='rgba(255,255,255,0.03)';this.style.borderColor='rgba(255,255,255,0.08)';this.style.boxShadow='none'">
+                <img src="/instagram-icon.png" alt="" style="width:20px;height:20px;border-radius:4px"> @denis.futurist (Instagram)
+              </a>
+            </div>
+
+            <p style="color:var(--t);font-size:1.05rem;line-height:1.7;font-style:italic;position:relative;padding-left:1.5rem;border-left:2px solid rgba(41,226,255,0.3)">
+              «Я собрал команду AI-агентов для собственного бизнеса — и они заменили мне ассистента, маркетолога и аналитика. Мой администратор разбирает 200+ писем в день и сам отвечает на рутинные. Теперь я настраиваю такие команды для других предпринимателей.»
+            </p>
+          </div>
+
+          <div
+            style="flex-shrink:0;width:350px;height:500px;border-radius:24px;overflow:hidden;border:1px solid rgba(255,255,255,.1);box-shadow:0 20px 60px rgba(0,0,0,.5);position:relative">
+            <video autoplay loop muted playsinline
+              style="width:100%; height:100%; object-fit:cover; filter:contrast(1.05) saturate(1.1);">
+              <source src="/hf_20260312_173338_c759bf24-39e2-46e6-b944-6e7c00a48df8-60ad53c0.mp4" type="video/mp4">
+            </video>
+            <div
+              style="position:absolute;inset:0;background:linear-gradient(to top, rgba(7,7,10,0.4) 0%, transparent 50%);pointer-events:none;">
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+        <!-- ═══════════════ BOOKING ═══════════════ -->
+    <section id="booking" style="position:relative;padding:6rem 1rem">
+      <div style="max-width:1060px;margin:auto">
+        <div style="text-align:center;margin-bottom:4rem">
+          <span class="sl rv" style="display:inline-block">Букинг</span>
+          <h2 class="rv d1" style="font-size:clamp(1.75rem,4vw,2.5rem);margin-top:1rem;font-weight:800;color:#fff">
+            Забронировать консультацию</h2>
+          <p class="rv d2"
+            style="color:var(--mt);margin-top:1rem;font-size:1rem;max-width:800px;margin-left:auto;margin-right:auto;">
+            30
+            минут — разберём ваши задачи и покажем, как OpenClaw автоматизирует ваш бизнес. Даже если не начнём работу —
+            получите готовый план автоматизации.</p>
+        </div>
+
+        <div class="book-card rv d3">
+          <div class="book-inner" style="position:relative;width:100%;">
+            <!-- LEFT: Calendar & Time Selection -->
+            <div id="booking-stage-1" style="display:flex;flex-direction:column;gap:1.5rem;min-width:0;">
+              <h3 style="font-family:'Space Grotesk', sans-serif;font-size:1.2rem;color:#fff;">1. Выберите дату и время</h3>
+              <!-- Calendar Widget -->
+              <!-- Dynamic Scrollable Calendar Widget -->
+              <div style="background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.05);border-radius:16px;padding:1.5rem;">
+                
+                <!-- Dates -->
+                <div style="margin-bottom:2rem;">
+                  <div style="color:var(--mt);font-size:0.75rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:1rem;">SELECT DATE</div>
+                  <div id="cal-scroll-dates" style="display:flex;gap:12px;overflow-x:auto;padding-bottom:12px;scrollbar-width:none;-ms-overflow-style:none;">
+                    <!-- Filled by JS -->
+                  </div>
+                </div>
+
+                <!-- Times -->
+                <div>
+                  <div style="color:var(--mt);font-size:0.75rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:1rem;">SELECT TIME (МСК)</div>
+                  <div id="cal-scroll-times" style="display:flex;gap:12px;overflow-x:auto;padding-bottom:12px;scrollbar-width:none;-ms-overflow-style:none;opacity:0.5;pointer-events:none;transition:opacity 0.3s;">
+                    <button type="button" class="cal-time-scr">10:00</button>
+                    <button type="button" class="cal-time-scr">11:00</button>
+                    <button type="button" class="cal-time-scr">12:00</button>
+                    <button type="button" class="cal-time-scr">13:00</button>
+                    <button type="button" class="cal-time-scr">14:00</button>
+                    <button type="button" class="cal-time-scr">15:00</button>
+                    <button type="button" class="cal-time-scr">16:00</button>
+                    <button type="button" class="cal-time-scr">17:00</button>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+            <!-- RIGHT: The form itself -->
+            <div id="booking-stage-2"
+              style="display:none;flex-direction:column;gap:1.5rem;opacity:0;transition:opacity 0.4s ease;">
+              <h3 style="font-family:'Space Grotesk', sans-serif;font-size:1.2rem;color:#fff;">2. Ваши данные</h3>
+              <form id="fm"
+                style="display:flex;flex-direction:column;gap:1.25rem;background:rgba(255,255,255,.015);border:1px solid rgba(255,255,255,.05);border-radius:16px;padding:2rem;">
+                <input type="hidden" name="booking_date" id="booking_date" value="2026-03-05">
+                <input type="hidden" name="booking_time" id="booking_time" value="11:30">
+
+                <div>
+                  <label
+                    style="display:block;color:var(--t);font-family:'Space Grotesk', sans-serif;font-size:.85rem;font-weight:600;margin-bottom:.5rem">Ваше
+                    имя *</label>
+                  <input type="text" name="name" placeholder="Иван Петров" required
+                    style="width:100%;padding:.9rem 1rem;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:12px;color:#fff;font-family:'Manrope';outline:none;transition:border-color .3s"
+                    onfocus="this.style.borderColor='var(--accent)'"
+                    onblur="this.style.borderColor='rgba(255,255,255,.08)'">
+                </div>
+                <div>
+                  <label
+                    style="display:block;color:var(--t);font-family:'Space Grotesk', sans-serif;font-size:.85rem;font-weight:600;margin-bottom:.5rem">Телефон
+                    для связи *</label>
+                  <input type="tel" id="phone" name="phone" required
+                    style="width:100%;padding:.9rem 1rem;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:12px;color:#fff;font-family:'Manrope';outline:none;transition:border-color .3s"
+                    onfocus="this.style.borderColor='var(--accent)'"
+                    onblur="this.style.borderColor='rgba(255,255,255,.08)'">
+                </div>
+                <div>
+                  <label
+                    style="display:block;color:var(--t);font-family:'Space Grotesk', sans-serif;font-size:.85rem;font-weight:600;margin-bottom:.5rem">О
+                    компании</label>
+                  <input type="text" name="company" placeholder="Ссылка на сайт или описание"
+                    style="width:100%;padding:.9rem 1rem;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:12px;color:#fff;font-family:'Manrope';outline:none;transition:border-color .3s"
+                    onfocus="this.style.borderColor='var(--accent)'"
+                    onblur="this.style.borderColor='rgba(255,255,255,.08)'">
+                </div>
+                <div>
+                  <label
+                    style="display:block;color:var(--t);font-family:'Space Grotesk', sans-serif;font-size:.85rem;font-weight:600;margin-bottom:.5rem">Вопрос
+                    или задача</label>
+                  <textarea name="message" placeholder="Какой процесс хотите автоматизировать?"
+                    style="width:100%;padding:.9rem 1rem;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:12px;color:#fff;font-family:'Manrope';min-height:80px;resize:vertical;outline:none;transition:border-color .3s"
+                    onfocus="this.style.borderColor='var(--accent)'"
+                    onblur="this.style.borderColor='rgba(255,255,255,.08)'"></textarea>
+                </div>
+                <!-- Honeypot -->
+                <input type="hidden" name="hp">
+
+                <label style="display:flex;align-items:flex-start;gap:0.5rem;color:var(--mt);font-size:0.75rem;cursor:pointer;margin-top:0.5rem;">
+                  <input type="checkbox" required style="accent-color:var(--accent);width:16px;height:16px;margin-top:0.15rem;">
+                  <span style="line-height:1.4; text-align:left;">Нажимая кнопку, вы даете <a href="consent.html" style="color:var(--accent);text-decoration:none;">согласие на обработку персональных данных</a> и соглашаетесь с <a href="privacy.html" style="color:var(--accent);text-decoration:none;">Политикой конфиденциальности</a> *</span>
+                </label>
+
+                <button type="submit" class="bm" style="width:100%;margin-top:1rem;height:60px;"><span>Подтвердить
+                    встречу</span></button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════ FOOTER ═══════════════ -->
+    <footer style="position:relative;padding:4rem 1rem;border-top:1px solid rgba(255,255,255,.03)">
+      <div style="max-width:1060px;margin:auto">
+        <div class="cg2" style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:2rem;margin-bottom:3rem">
+          <div>
+            <h4 style="font-family:'Space Grotesk', sans-serif;font-weight:700;color:#fff;margin-bottom:1rem;font-size:.9rem">Продукт
+            </h4>
+            <ul style="list-style:none">
+              <li style="margin-bottom:.5rem"><a href="#"
+                  style="color:var(--mt);text-decoration:none;font-size:.85rem;transition:color .3s"
+                  onmouseover="this.style.color=\'#fff\'" onmouseout="this.style.color=\'var(--mt)\'">Возможности</a></li>
+
+              <li style="margin-bottom:.5rem"><a href="#"
+                  style="color:var(--mt);text-decoration:none;font-size:.85rem;transition:color .3s"
+                  onmouseover="this.style.color=\'#fff\'" onmouseout="this.style.color=\'var(--mt)\'">Security</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4 style="font-family:'Space Grotesk', sans-serif;font-weight:700;color:#fff;margin-bottom:1rem;font-size:.9rem">Компания
+            </h4>
+            <ul style="list-style:none">
+              <li style="margin-bottom:.5rem"><a href="#"
+                  style="color:var(--mt);text-decoration:none;font-size:.85rem;transition:color .3s"
+                  onmouseover="this.style.color=\'#fff\'" onmouseout="this.style.color=\'var(--mt)\'">О нас</a></li>
+              <li style="margin-bottom:.5rem"><a href="#"
+                  style="color:var(--mt);text-decoration:none;font-size:.85rem;transition:color .3s"
+                  onmouseover="this.style.color=\'#fff\'" onmouseout="this.style.color=\'var(--mt)\'">Блог</a></li>
+              <li style="margin-bottom:.5rem"><a href="#"
+                  style="color:var(--mt);text-decoration:none;font-size:.85rem;transition:color .3s"
+                  onmouseover="this.style.color=\'#fff\'" onmouseout="this.style.color=\'var(--mt)\'">Карьера</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4 style="font-family:'Space Grotesk', sans-serif;font-weight:700;color:#fff;margin-bottom:1rem;font-size:.9rem">Ресурсы
+            </h4>
+            <ul style="list-style:none">
+              <li style="margin-bottom:.5rem"><a href="#"
+                  style="color:var(--mt);text-decoration:none;font-size:.85rem;transition:color .3s"
+                  onmouseover="this.style.color=\'#fff\'" onmouseout="this.style.color=\'var(--mt)\'">Документация</a></li>
+              <li style="margin-bottom:.5rem"><a href="#"
+                  style="color:var(--mt);text-decoration:none;font-size:.85rem;transition:color .3s"
+                  onmouseover="this.style.color=\'#fff\'" onmouseout="this.style.color=\'var(--mt)\'">API</a></li>
+              <li style="margin-bottom:.5rem"><a href="#"
+                  style="color:var(--mt);text-decoration:none;font-size:.85rem;transition:color .3s"
+                  onmouseover="this.style.color=\'#fff\'" onmouseout="this.style.color=\'var(--mt)\'">Support</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4 style="font-family:'Space Grotesk', sans-serif;font-weight:700;color:#fff;margin-bottom:1rem;font-size:.9rem">Социальные
+              сети</h4>
+            <ul style="list-style:none">
+              <li style="margin-bottom:.5rem"><a href="#"
+                  style="color:var(--mt);text-decoration:none;font-size:.85rem;transition:color .3s"
+                  onmouseover="this.style.color=\'#fff\'" onmouseout="this.style.color=\'var(--mt)\'">Twitter/X</a></li>
+              <li style="margin-bottom:.5rem"><a href="#"
+                  style="color:var(--mt);text-decoration:none;font-size:.85rem;transition:color .3s"
+                  onmouseover="this.style.color=\'#fff\'" onmouseout="this.style.color=\'var(--mt)\'">LinkedIn</a></li>
+              <li style="margin-bottom:.5rem"><a href="#"
+                  style="color:var(--mt);text-decoration:none;font-size:.85rem;transition:color .3s"
+                  onmouseover="this.style.color=\'#fff\'" onmouseout="this.style.color=\'var(--mt)\'">Discord</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div
+          style="border-top:1px solid rgba(255,255,255,.03);padding-top:2rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem">
+          <p style="color:var(--mt);font-size:.8rem">© 2025 Futurist AI. Все права защищены.</p>
+          <div style="display:flex;gap:2rem">
+            <a href="#" style="color:var(--mt);text-decoration:none;font-size:.8rem;transition:color .3s"
+              onmouseover="this.style.color=\'#fff\'" onmouseout="this.style.color=\'var(--mt)\'">Privacy Policy</a>
+            <a href="#" style="color:var(--mt);text-decoration:none;font-size:.8rem;transition:color .3s"
+              onmouseover="this.style.color=\'#fff\'" onmouseout="this.style.color=\'var(--mt)\'">Terms of Service</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+  </div>
+
+  <!-- The #fcta floating arrow button was removed here -->
+
+  <!-- CallAI Widget Start -->
+  
+  <!-- CallAI Widget End -->
+
+  
+    <!-- ═══════════════ AI CHAT WIDGET ═══════════════ -->
+    <div id="ai-chat-widget" style="position:fixed;bottom:2rem;right:2rem;z-index:9999;font-family:'Space Grotesk',sans-serif;">
+      <!-- Toggle Button -->
+      <button id="ai-chat-toggle" class="premium-chat-toggle">
+        <div class="pulse-ring"></div>
+        <div class="pulse-ring delay"></div>
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" style="z-index:2;position:relative;filter:drop-shadow(0px 2px 4px rgba(0,0,0,0.3));">
+          <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M8 12h.01M12 12h.01M16 12h.01" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+
+      <!-- Chat Window -->
+      <div id="ai-chat-window" style="position:absolute;bottom:80px;right:0;width:380px;height:600px;max-height:80vh;background:var(--card);border:1px solid rgba(255,255,255,0.05);border-radius:24px;box-shadow:0 24px 48px rgba(0,0,0,0.5);display:flex;flex-direction:column;opacity:0;pointer-events:none;transform:translateY(20px) scale(0.95);transition:all 0.4s cubic-bezier(0.16,1,0.3,1);overflow:hidden;backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);">
+        
+        <!-- Header -->
+        <div style="padding:1.5rem;border-bottom:1px solid rgba(255,255,255,0.05);display:flex;align-items:center;gap:1rem;background:rgba(255,255,255,0.02);">
+          <div style="width:40px;height:40px;border-radius:12px;background:var(--accent);display:flex;align-items:center;justify-content:center;color:var(--bg);">
+            <i class="ph-duotone ph-robot" style="font-size:1.5rem;"></i>
+          </div>
+          <div style="flex:1;">
+            <h3 style="margin:0;font-size:1.1rem;color:#fff;font-weight:700;">Futurist AI</h3>
+            <div style="display:flex;align-items:center;gap:6px;margin-top:2px;">
+              <div style="width:8px;height:8px;border-radius:50%;background:#10b981;box-shadow:0 0 8px rgba(16,185,129,0.5);"></div>
+              <span style="font-size:0.75rem;color:var(--mt);">В сети • Отвечает мгновенно</span>
+            </div>
+          </div>
+          <button id="ai-chat-close" style="width:32px;height:32px;border-radius:50%;background:rgba(255,255,255,0.1);border:none;color:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background 0.2s,color 0.2s;" onmouseover="this.style.background='rgba(255,255,255,0.2)';" onmouseout="this.style.background='rgba(255,255,255,0.1)';">
+            <i class="ph-duotone ph-x" style="font-size:1.2rem;"></i>
+          </button>
+        </div>
+
+        <!-- Messages Area -->
+        <div id="ai-chat-messages" style="flex:1;padding:1.5rem;overflow-y:auto;display:flex;flex-direction:column;gap:1rem;scrollbar-width:thin;scrollbar-color:rgba(255,255,255,0.1) transparent;">
+          <!-- Messages will be injected here -->
+        </div>
+
+        <!-- Input Area (Always available for manual messages) -->
+        <div id="ai-chat-input-area" style="padding:1.2rem 1.5rem;border-top:1px solid rgba(255,255,255,0.05);background:rgba(255,255,255,0.02); display:block;">
+          <form id="ai-chat-form" style="display:flex;flex-direction:column;gap:0.75rem;position:relative;">
+            <div style="position:relative;display:flex;">
+              <input type="text" id="ai-chat-input" placeholder="Задайте вопрос..." style="flex:1;padding:0.875rem 1rem;padding-right:3rem;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.1);border-radius:12px;color:#fff;font-family:inherit;font-size:0.9rem;outline:none;transition:border-color 0.3s;" onfocus="this.style.borderColor='var(--accent)'" onblur="this.style.borderColor='rgba(255,255,255,0.1)'" autocomplete="off">
+              <button type="submit" style="position:absolute;right:0.5rem;top:50%;transform:translateY(-50%);width:32px;height:32px;border-radius:8px;background:var(--accent);border:none;color:var(--bg);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:transform 0.2s,opacity 0.2s;">
+                <i class="ph-bold ph-paper-plane-right" style="font-size:1rem;"></i>
+              </button>
+            </div>
+            <label style="display:flex;align-items:flex-start;gap:0.4rem;color:var(--mt);font-size:0.65rem;cursor:pointer;margin-top:0.25rem;">
+              <input type="checkbox" required style="accent-color:var(--accent);width:12px;height:12px;margin-top:0.1rem;">
+              <span style="line-height:1.3;">Согласен с <a href="privacy.html" style="color:var(--accent);text-decoration:none;">Политикой</a> и <a href="consent.html" style="color:var(--accent);text-decoration:none;">обработкой данных</a> *</span>
+            </label>
+          </form>
+        </div>
+        <div style="text-align:center;padding:0.5rem;border-top:1px solid rgba(255,255,255,0.02);">
+            <span style="font-size:0.6rem;color:var(--t);text-transform:uppercase;letter-spacing:0.05em;opacity:0.5;">Powered by FuturistOS</span>
+        </div>
+      </div>
+    </div>
+    
+  <script src="darkveil.js"></script>
+  <script src="script.js"></script>
+
+<script>
+function initApp() {
+    try {
+      // Mark body as JS-ready to enable scroll-reveal animations
+      document.body.classList.add('js-loaded');
+      // Execute the scripts here on mount safely
+      window.addEventListener('scroll', () => { const e = document.getElementById('sp'), h = document.documentElement.scrollHeight - window.innerHeight; e.style.width = h > 0 ? (window.scrollY / h) * 100 + '%' : '0' }, { passive: !0 });
+      const obs = new IntersectionObserver(e => { e.forEach(e => { if (e.isIntersecting) e.target.classList.add('v') }) }, { threshold: .06, rootMargin: '0px 0px -20px 0px' });
+      document.querySelectorAll('.rv').forEach(e => obs.observe(e));
+      // Immediately trigger reveal for elements already in viewport (above the fold)
+      setTimeout(() => {
+        document.querySelectorAll('.rv').forEach(el => {
+          const rect = el.getBoundingClientRect();
+          if (rect.top < window.innerHeight) el.classList.add('v');
+        });
+      }, 100);
+      const cobs = new IntersectionObserver(e => { e.forEach(e => { if (e.isIntersecting) { const el = e.target, end = parseInt(el.dataset.count); if (!end || el.dataset.done) return; el.dataset.done = '1'; let s = 0; const dur = 1200, step = Math.ceil(dur / 60), inc = end / step; const t = setInterval(() => { s += inc; if (s >= end) { el.textContent = end + '+'; clearInterval(t) } else { el.textContent = Math.floor(s) + '+' } }, dur / step) } }) }, { threshold: .5 });
+      document.querySelectorAll('[data-count]').forEach(e => cobs.observe(e));
+      function switchTab(n) { document.querySelectorAll('.tab-btn').forEach((b, i) => b.classList.toggle('active', i === n)); document.querySelectorAll('.tab-panel').forEach((p, i) => p.classList.toggle('active', i === n)) }
+      window.tA = function(h) { const i = h.parentElement; const b = h.nextElementSibling; const o = i.classList.contains("open"); document.querySelectorAll(".ai").forEach(x => { x.classList.remove("open"); x.querySelector(".ab").style.maxHeight = "0"; }); if (!o) { i.classList.add("open"); b.style.maxHeight = b.scrollHeight + "px"; } };
+      document.querySelectorAll('a[href^="#"]').forEach(a => { a.addEventListener('click', e => { e.preventDefault(); const t = document.querySelector(a.getAttribute('href')); t && t.scrollIntoView({ behavior: 'smooth', block: 'start' }) }) });
+      const fcta = document.getElementById('fcta');
+      const svid = document.getElementById('scroll-video');
+      window.addEventListener('scroll', () => {
+        fcta.classList.toggle('show', window.scrollY > 600);
+        if (svid && svid.duration) {
+          const parent = svid.parentElement.parentElement;
+          const rect = parent.getBoundingClientRect();
+          const scrollProgress = Math.max(0, Math.min(1, -rect.top / (rect.height - window.innerHeight)));
+          // Add a slight smoothing effect or just map directly
+          svid.currentTime = scrollProgress * svid.duration;
+        }
+      }, { passive: !0 });
+      const ns = document.createElement('style'); ns.textContent = '@media(min-width:769px){#nav-links{display:flex!important}}'; document.head.appendChild(ns);
+      const getUTMs = () => { const p = new URLSearchParams(location.search), u = {};['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content'].forEach(k => { if (p.get(k)) u[k] = p.get(k) }); return u };
+      document.getElementById('fm').addEventListener('submit', async e => {
+        e.preventDefault(); const f = e.target, hp = f.querySelector('input[name="hp"]'); if (hp && hp.value) return;
+        const b = f.querySelector('button[type="submit"]'), orig = b.innerHTML;
+        b.innerHTML = '<span>Отправка...</span>'; b.disabled = !0;
+        const d = {}; f.querySelectorAll('input,textarea').forEach(e => { if (e.name && e.value && e.name !== 'hp') d[e.name] = e.value });
+        const utms = getUTMs(); const payload = { ...d, ...utms, page_url: location.href, project: 'OpenClaw — Futurist' };
+        const TG = 'YOUR_BOT_TOKEN', CH = 'YOUR_CHAT_ID';
+        let m = '<b>OpenClaw Lead</b>\n\n'; for (const [k, v] of Object.entries(d)) m += `<b>${k}:</b> ${v}\n`;
+        m += `\n<b>URL:</b> ${location.href}\n`;
+        if (Object.keys(utms).length > 0) { m += '\n<b>UTM:</b>\n'; for (const [k, v] of Object.entries(utms)) m += `${k}: ${v}\n` }
+        try {
+          await Promise.all([fetch(`https://api.telegram.org/bot${TG}/sendMessage`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ chat_id: CH, text: m, parse_mode: 'HTML' }) })]);
+          b.innerHTML = '<span style="color:var(--g)">Отправлено!</span>'; f.reset(); setTimeout(() => { b.innerHTML = orig; b.disabled = !1 }, 4000);
+        } catch (err) { b.innerHTML = '<span>Ошибка — напишите напрямую</span>'; setTimeout(() => { b.innerHTML = orig; b.disabled = !1 }, 3000) }
+      });
+
+      document.querySelectorAll('.scen-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const p = btn.closest('.scen-wrapper');
+          p.querySelectorAll('.scen-btn').forEach(b => {
+            b.classList.remove('active');
+            b.style.background = 'transparent';
+            b.style.borderColor = 'transparent';
+            b.style.color = 'var(--mt)';
+          });
+          btn.classList.add('active');
+          btn.style.background = 'rgba(255,255,255,.04)';
+          btn.style.borderColor = 'rgba(255,255,255,.1)';
+          btn.style.color = '#fff';
+
+          const target = btn.dataset.target;
+          p.querySelectorAll('.scen-pane').forEach(pane => {
+            if (pane.id === target) {
+              pane.style.opacity = '1';
+              pane.style.visibility = 'visible';
+              pane.style.pointerEvents = 'auto';
+              pane.style.zIndex = '2';
+              pane.style.transform = 'translateY(0)';
+            } else {
+              pane.style.opacity = '0';
+              pane.style.visibility = 'hidden';
+              pane.style.pointerEvents = 'none';
+              pane.style.zIndex = '1';
+              pane.style.transform = 'translateY(20px)';
+            }
+          });
+        });
+      });
+
+      // ═══════════════ DYNAMIC CALENDAR ENGINE (SCROLLABLE) ═══════════════
+      const DOW_NAMES = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'];
+      const MONTH_NAMES_SHORT = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
+
+      const calScrollDates = document.getElementById('cal-scroll-dates');
+      const calScrollTimes = document.getElementById('cal-scroll-times');
+      const bookingDateInput = document.getElementById('booking_date');
+      const bookingTimeInput = document.getElementById('booking_time');
+      const stage2 = document.getElementById('booking-stage-2');
+
+      const today = new Date();
+      today.setHours(0,0,0,0);
+      let selectedDate = null;
+
+      function generateScrollDates() {
+        calScrollDates.innerHTML = '';
+        
+        // Generate next 30 days
+        for (let i = 0; i < 30; i++) {
+          const dateObj = new Date(today);
+          dateObj.setDate(today.getDate() + i);
+          
+          // Skip weekends (optional, but standard for B2B)
+          if (dateObj.getDay() === 0 || dateObj.getDay() === 6) continue;
+          
+          const dStr = dateObj.getFullYear() + '-' + String(dateObj.getMonth() + 1).padStart(2, '0') + '-' + String(dateObj.getDate()).padStart(2, '0');
+          const dowStr = DOW_NAMES[dateObj.getDay()];
+          const monStr = MONTH_NAMES_SHORT[dateObj.getMonth()];
+          const numStr = dateObj.getDate();
+
+          const btn = document.createElement('button');
+          btn.type = 'button';
+          btn.className = 'cal-date-scr';
+          btn.innerHTML = `<div class="dow">${dowStr}</div><div class="num">${numStr}</div><div class="mon">${monStr}</div>`;
+          btn.dataset.date = dStr;
+
+          btn.addEventListener('click', () => {
+            document.querySelectorAll('.cal-date-scr').forEach(x => x.classList.remove('active'));
+            btn.classList.add('active');
+            selectedDate = dStr;
+            bookingDateInput.value = dStr;
+            
+            // Enable time selection
+            calScrollTimes.style.opacity = '1';
+            calScrollTimes.style.pointerEvents = 'auto';
+          });
+
+          calScrollDates.appendChild(btn);
+        }
+      }
+
+      generateScrollDates();
+
+      document.querySelectorAll('.cal-time-scr').forEach(t => {
+        t.addEventListener('click', () => {
+          document.querySelectorAll('.cal-time-scr').forEach(x => x.classList.remove('active'));
+          t.classList.add('active');
+          bookingTimeInput.value = t.textContent;
+
+          // Reveal Form Stage 2 and hide Stage 1 (Calendly flow)
+          const stage1 = document.getElementById('booking-stage-1');
+          const bookInner = document.querySelector('.book-inner');
+          
+          if (stage1 && bookInner) {
+            stage1.style.opacity = '0';
+            setTimeout(() => {
+              stage1.style.display = 'none';
+              bookInner.style.display = 'block'; // Remove grid constraints
+              
+              stage2.style.display = 'flex';
+              setTimeout(() => { stage2.style.opacity = '1'; }, 50);
+            }, 300); // Wait for fade out
+          } else {
+            stage2.style.display = 'flex';
+            setTimeout(() => { stage2.style.opacity = '1'; }, 50);
+          }
+        });
+      });
+
+      // Phone Input Mask Initialization
+      const phoneInputField = document.querySelector("#phone");
+      if (phoneInputField) {
+        if (window.intlTelInput) { 
+          const phoneInput = window.intlTelInput(phoneInputField, {
+            initialCountry: "auto",
+            nationalMode: false,
+            autoInsertDialCode: true,
+            strictMode: true,
+            geoIpLookup: callback => {
+              fetch("https://ipapi.co/json")
+                .then(res => res.json())
+                .then(data => callback(data.country_code))
+                .catch(() => callback("ru"));
+            },
+            utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@20.0.5/build/js/utils.js",
+          });
+
+          // Optional: Make intl-tel-input play nice with the dark theme
+          phoneInputField.style.paddingLeft = '50px'; // ensure space for flag
+        } 
+      }
+
+
+
+
+} catch(e) { console.error('initApp error:', e); }
+}
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initApp);
+} else {
+  initApp();
+}
+</script>
+<!-- COOKIE CONSENT POPUP -->
+<div id="cookie-popup" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:9999;padding:1rem;pointer-events:none">
+  <div style="max-width:520px;margin:0 auto;background:rgba(13,13,17,.96);backdrop-filter:blur(24px);border:1px solid rgba(255,255,255,.06);border-radius:16px;padding:1.4rem 1.6rem;pointer-events:auto;box-shadow:0 -4px 40px rgba(0,0,0,.4)">
+    <p style="color:var(--t);font-size:.84rem;line-height:1.6;margin-bottom:1rem">
+      Мы используем cookie-файлы для улучшения работы сайта и анализа трафика. Продолжая использовать сайт, вы соглашаетесь с нашей
+      <a href="privacy.html" style="color:var(--accent);text-decoration:none;border-bottom:1px solid rgba(41,226,255,.3)">Политикой конфиденциальности</a>.
+    </p>
+    <div style="display:flex;gap:.7rem;align-items:center;flex-wrap:wrap">
+      <button onclick="acceptCookies()" style="font-family:'Space Grotesk', sans-serif;font-size:.65rem;font-weight:600;padding:.6rem 1.3rem;border-radius:9px;border:none;cursor:pointer;background:linear-gradient(135deg,var(--accent),var(--p));color:#fff;transition:transform .3s,box-shadow .3s" onmouseover="this.style.transform='translateY(-1px)';this.style.boxShadow='0 0 20px rgba(41,226,255,.15)'" onmouseout="this.style.transform='none';this.style.boxShadow='none'">Принять</button>
+      <button onclick="declineCookies()" style="font-family:'Manrope', sans-serif;font-size:.78rem;font-weight:500;padding:.55rem 1rem;border-radius:9px;border:1px solid var(--dm);cursor:pointer;background:transparent;color:var(--mt);transition:all .3s" onmouseover="this.style.borderColor='var(--accent)';this.style.color='#fff'" onmouseout="this.style.borderColor='var(--dm)';this.style.color='var(--mt)'">Отклонить</button>
+      <a href="privacy.html" style="color:var(--mt);text-decoration:none;font-size:.78rem;margin-left:auto;transition:color .3s" onmouseover="this.style.color='var(--accent)'" onmouseout="this.style.color='var(--mt)'">Подробнее</a>
+    </div>
+  </div>
+</div>
+<script>
+(function(){
+  if(!localStorage.getItem('cookie_consent')){
+    setTimeout(function(){
+      var p=document.getElementById('cookie-popup');
+      if(p){p.style.display='block';p.style.animation='cookieSlideUp .5s cubic-bezier(.16,1,.3,1)'}
+    },1500);
+  }
+})();
+function acceptCookies(){
+  localStorage.setItem('cookie_consent','accepted');
+  hideCookiePopup();
+}
+function declineCookies(){
+  localStorage.setItem('cookie_consent','declined');
+  hideCookiePopup();
+}
+function hideCookiePopup(){
+  var p=document.getElementById('cookie-popup');
+  if(p){p.style.animation='cookieSlideDown .4s ease forwards';setTimeout(function(){p.style.display='none'},400)}
+}
+</script>
+<style>
+@keyframes cookieSlideUp{from{opacity:0;transform:translateY(100%)}to{opacity:1;transform:translateY(0)}}
+@keyframes cookieSlideDown{from{opacity:1;transform:translateY(0)}to{opacity:0;transform:translateY(100%)}}
+</style>
+</body>
+
+
+</html>
