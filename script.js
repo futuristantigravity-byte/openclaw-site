@@ -126,8 +126,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // Config
     const TELEGRAM_BOT_TOKEN = "YOUR_TELEGRAM_TOKEN"; // Placeholder
     const TELEGRAM_CHAT_ID = "YOUR_CHAT_ID";         // Placeholder
-    const MAIK_BOT_URL = "YOUR_MAIK_BOT_URL";       // Placeholder
-    const MAIK_BOT_TOKEN = "YOUR_MAIK_BOT_TOKEN";   // Placeholder
+    const MAIK_BOT_URL = window.location.origin;       // Production host
+    const MAIK_BOT_TOKEN = "futurist_secret_web_token_123";   // Matches .env WEB_API_TOKEN
 
     let chatData = {
         name: "",
