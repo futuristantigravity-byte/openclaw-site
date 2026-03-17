@@ -1138,6 +1138,18 @@ function initApp() {
 
           // Optional: Make intl-tel-input play nice with the dark theme
           phoneInputField.style.paddingLeft = '50px'; // ensure space for flag
+          
+          // Auto-fill the dial code into the input value immediately and on country change
+          const updateDialCode = () => {
+              const countryData = phoneInput.getSelectedCountryData();
+              if (countryData && countryData.dialCode) {
+                  phoneInputField.value = '+' + countryData.dialCode + ' ';
+              }
+          };
+          
+          // It takes a moment for geoIpLookup to finish, so we listen for promise resolution
+          phoneInput.promise.then(updateDialCode);
+          phoneInputField.addEventListener('countrychange', updateDialCode);
         } 
       }
 

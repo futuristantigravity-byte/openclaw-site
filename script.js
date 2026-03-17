@@ -283,6 +283,18 @@ document.addEventListener('DOMContentLoaded', () => {
                 utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@20.0.5/build/js/utils.js",
             });
             inputEl.style.paddingLeft = '50px';
+            
+            // Auto-fill the dial code into the input value immediately and on country change
+            const updateDialCode = () => {
+                const countryData = phoneInputInstance.getSelectedCountryData();
+                if (countryData && countryData.dialCode) {
+                    inputEl.value = '+' + countryData.dialCode + ' ';
+                }
+            };
+            
+            // It takes a moment for geoIpLookup to finish, so we listen for promise resolution
+            phoneInputInstance.promise.then(updateDialCode);
+            inputEl.addEventListener('countrychange', updateDialCode);
         }
 
         const handleSubmit = () => {
